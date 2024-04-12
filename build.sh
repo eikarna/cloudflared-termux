@@ -1,10 +1,10 @@
 #!/bin/sh
 
 echo "--upgrading packages"
-yes "" | pkg update
+apt update && apt upgrade -y
 
 echo "-- installing dependancies: golang git debianutils make"
-yes "" | pkg install golang git debianutils make
+apt install -y golang git debianutils make
 
 echo "-- Downloading cloudflared source"
 git clone https://github.com/cloudflare/cloudflared.git --depth=1
@@ -13,6 +13,5 @@ sed -i 's/linux/android/g' Makefile
 
 echo "-- Building and installing cloudflared"
 make cloudflared
-install cloudflared /data/data/com.termux/files/usr/bin
 
-echo "-- done!https://youtube.com/c/rajbhx "
+echo "-- Success Building!"
