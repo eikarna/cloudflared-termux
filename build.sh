@@ -1,10 +1,10 @@
 #!/bin/sh
 
 echo "--upgrading packages"
-apt update && apt upgrade -y
+sudo apt update && apt upgrade -y
 
 echo "-- installing dependancies: golang git debianutils make"
-apt install -y golang git debianutils make
+sudo apt install -y golang git debianutils make
 
 echo "-- Downloading cloudflared source"
 git clone https://github.com/cloudflare/cloudflared.git --depth=1
@@ -15,3 +15,4 @@ echo "-- Building and installing cloudflared"
 make cloudflared
 
 echo "-- Success Building!"
+ls
